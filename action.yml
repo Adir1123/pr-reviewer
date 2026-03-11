@@ -1,0 +1,22 @@
+name: PR Reviewer
+description: AI-powered PR review using Claude Opus
+inputs:
+  anthropic_api_key:
+    description: Anthropic API key
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: pip install --upgrade pip && pip install -r ${{ github.action_path }}/requirements.txt
+      shell: bash
+    - run: python ${{ github.action_path }}/reviewer/main.py
+      shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic_api_key }}
+        GITHUB_TOKEN: ${{ github.token }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+        PR_SHA: ${{ github.event.pull_request.head.sha }}
