@@ -59,7 +59,10 @@ def _truncate_diff(pr_data: dict, api_key: str) -> tuple[dict, bool]:
         return pr_data, False
 
     file_diffs = _split_diff_by_file(diff)
-    file_diffs.sort(key=lambda x: x.count("\n"), reverse=True)
+    file_diffs.sort(
+        key=lambda x: sum(1 for l in x.splitlines() if l.startswith(("+", "-")) and not l.startswith(("---", "+++"))),
+        reverse=True,
+    )
 
     accumulated = ""
     for file_diff in file_diffs:
@@ -136,8 +139,8 @@ def main() -> None:
         time.sleep(2)
         try:
             post_review(review, env["REPO"], env["PR_NUMBER"], env["PR_SHA"], env["GITHUB_TOKEN"], truncated)
-        except GithubException:
-            logging.error(f"GitHub API retry failed: {e}")
+        except GithubException as retry_e:
+            logging.error(f"GitHub API retry failed: {retry_e}")
             sys.exit(1)
 
     logging.info("Review posted successfully.")
