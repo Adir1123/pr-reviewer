@@ -2,7 +2,7 @@
 
 AI-powered GitHub PR reviewer using Claude Opus. Drops into any repo in 2 steps.
 
-![Tests](https://github.com/YOUR_USERNAME/pr-reviewer/actions/workflows/test.yml/badge.svg)
+![Tests](https://github.com/Adir1123/pr-reviewer/actions/workflows/test.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Model](https://img.shields.io/badge/model-claude--opus--4--6-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -24,7 +24,7 @@ every new commit to the PR.
     on: [pull_request]
     jobs:
       review:
-        uses: YOUR_USERNAME/pr-reviewer/.github/workflows/review.yml@v1
+        uses: Adir1123/pr-reviewer/.github/workflows/review.yml@v1
         secrets:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -64,7 +64,7 @@ action.yml        # composite action definition
 ## Local development
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/pr-reviewer
+git clone https://github.com/Adir1123/pr-reviewer
 pip install -r requirements.txt
 cp .env.example .env   # fill in your keys
 pytest
