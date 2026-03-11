@@ -36,7 +36,7 @@ Use bullet points under each heading. If no issues in a section, write exactly "
 
 def build_user_prompt(
     pr_title: str,
-    pr_body: str,
+    pr_body: str | None,
     file_list: list[str],
     diff: str,
 ) -> str:
