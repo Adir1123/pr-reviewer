@@ -81,7 +81,3 @@ pytest
 ## License
 
 MIT
-
-## Test PR
-
-This change is only for testing the PR reviewer.
