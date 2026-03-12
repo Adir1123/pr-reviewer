@@ -15,6 +15,7 @@ runs:
     - run: python ${{ github.action_path }}/reviewer/main.py
       shell: bash
       env:
+        PYTHONPATH: ${{ github.action_path }}
         ANTHROPIC_API_KEY: ${{ inputs.anthropic_api_key }}
         GITHUB_TOKEN: ${{ github.token }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
