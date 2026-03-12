@@ -25,6 +25,9 @@ every new commit to the PR.
     jobs:
       review:
         uses: Adir1123/pr-reviewer/.github/workflows/review.yml@v1
+        permissions:
+          pull-requests: write
+          contents: read
         secrets:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
