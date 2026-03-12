@@ -30,21 +30,7 @@ every new commit to the PR.
           contents: read
         secrets:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
-## How it works
-
-```mermaid
-flowchart LR
-    A[PR Opened] --> B[fetcher.py\nGitHub API\ngets diff]
-    B --> C[analyzer.py\nClaude Opus\nreviews diff]
-    C --> D[formatter.py\nstructures\n4 sections]
-    D --> E[poster.py\nposts PR\ncomment]
-    style A fill:#ddf4ff,stroke:#0550ae
-    style B fill:#fff8c5,stroke:#9a6700
-    style C fill:#ffebe9,stroke:#cf222e
-    style D fill:#dafbe1,stroke:#116329
-    style E fill:#fbefff,stroke:#8250df
-```
+          
 
 ## Project structure
 
